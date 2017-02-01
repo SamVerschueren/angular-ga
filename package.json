@@ -19,7 +19,13 @@
     "tsc": "tsc"
   },
   "keywords": [
-    "angular"
+    "angular",
+    "ga",
+    "google",
+    "analytics",
+    "google-analytics",
+    "googleanalytics",
+    "ganalytics"
   ],
   "files": [
     "dist"
