@@ -1,3 +1,1 @@
-import { OpaqueToken } from '@angular/core';
-
-export const GA_TOKEN = new OpaqueToken('gaIdToken');
+export const GA_TOKEN = 'angular-ga TrackingId';
