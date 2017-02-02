@@ -7,7 +7,8 @@
     "name": "Sam Verschueren",
     "email": "sam.verschueren@gmail.com"
   },
-  "main": "./dist/index.js",
+  "main": "index.js",
+  "module": "index.js",
   "engines": {
     "node": ">=4"
   },
@@ -28,7 +29,10 @@
     "ganalytics"
   ],
   "files": [
-    "dist"
+    "index.js",
+    "index.d.ts",
+    "index.metadata.json",
+    "lib"
   ],
   "dependencies": {},
   "devDependencies": {
