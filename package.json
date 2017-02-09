@@ -1,6 +1,7 @@
 {
   "name": "angular-ga",
   "version": "0.2.0",
+  "description": "Google Analytics for your Angular application",
   "license": "MIT",
   "repository": "SamVerschueren/angular-ga",
   "author": {
@@ -8,7 +9,6 @@
     "email": "sam.verschueren@gmail.com"
   },
   "main": "index.js",
-  "module": "index.js",
   "engines": {
     "node": ">=4"
   },
@@ -19,6 +19,12 @@
     "prepublish": "npm run build",
     "tsc": "tsc"
   },
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "index.metadata.json",
+    "lib"
+  ],
   "keywords": [
     "angular",
     "ga",
@@ -27,12 +33,6 @@
     "google-analytics",
     "googleanalytics",
     "ganalytics"
-  ],
-  "files": [
-    "index.js",
-    "index.d.ts",
-    "index.metadata.json",
-    "lib"
   ],
   "dependencies": {},
   "devDependencies": {
@@ -46,5 +46,6 @@
     "tslint": "^3.15.1",
     "typescript": "~2.0.2",
     "zone.js": "0.7.2"
-  }
+  },
+  "module": "index.js"
 }
