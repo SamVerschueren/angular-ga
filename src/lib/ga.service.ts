@@ -27,6 +27,12 @@ export class GoogleAnalyticsService {
 	}
 
 	private onPageView(pageview: PageView) {
-		ga('send', 'pageview', pageview.page);
+		const fieldsObject: any = {};
+
+		if (pageview.title) {
+			fieldsObject.title = pageview.title;
+		}
+
+		ga('send', 'pageview', pageview.page, fieldsObject);
 	}
 }

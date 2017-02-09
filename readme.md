@@ -113,6 +113,13 @@ Type: `string`
 
 The path portion of a URL. This value should start with a slash (/) character.
 
+##### title
+
+*Optional*<br>
+Type: `string`
+
+The title of the page (e.g. homepage)
+
 
 ## License
 
