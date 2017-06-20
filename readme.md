@@ -26,10 +26,26 @@ import { AppComponent } from './app.component';
 @NgModule({
 	imports: [
 		BrowserModule,
-		GoogleAnalyticsModule.forRoot({
-			provide: GA_TOKEN,
-			useValue: 'UA-TOKEN-1'
-		})
+		GoogleAnalyticsModule.forRoot()
+	],
+	declarations: [
+		AppComponent
+	],
+	bootstrap: [AppComponent],
+	providers: [
+		{ provide: GA_TOKEN, useValue: 'UA-TOKEN-1' }
+	]
+})
+export class AppModule { }
+```
+
+It's also possible to leave the configuration empty and configure the library later on through the service.
+
+```js
+@NgModule({
+	imports: [
+		BrowserModule,
+		GoogleAnalyticsModule.forRoot()
 	],
 	declarations: [
 		AppComponent
@@ -48,7 +64,6 @@ import { Component, OnInit } from '@angular/core';
 import { GoogleAnalyticsService } from 'angular-ga';
 
 @Component({
-	moduleId: module.id,
 	templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
@@ -66,8 +81,47 @@ export class AppComponent implements OnInit {
 }
 ```
 
+#### Configuration
+
+```js
+import { Component, OnInit } from '@angular/core';
+import { GoogleAnalyticsService } from 'angular-ga';
+
+@Component({
+	templateUrl: 'app.component.html'
+})
+export class AppComponent implements OnInit {
+
+	constructor(
+		private gaService: GoogleAnalyticsService
+	) { }
+
+	ngOnInit() {
+		this.gaService.configure('UA-TOKEN-1');
+	}
+}
+```
+
+
+### Service
+
 
 ## API
+
+### service.configure(trackingId, [options])
+
+#### trackingId
+
+Type: `string`
+
+Tracking Id.
+
+#### options
+
+Type: `Object` `string`<br>
+Default: `auto`
+
+Any of the [`Create Only Fields`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#create).
 
 ### service.event.emit(event: Event)
 

@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, Provider } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { GoogleAnalyticsService } from './ga.service';
 
@@ -8,11 +8,10 @@ import { GoogleAnalyticsService } from './ga.service';
 	exports: []
 })
 export class GoogleAnalyticsModule {
-	static forRoot(provider: Provider): ModuleWithProviders {
+	static forRoot(): ModuleWithProviders {
 		return {
 			ngModule: GoogleAnalyticsModule,
 			providers: [
-				provider,
 				GoogleAnalyticsService
 			]
 		};
