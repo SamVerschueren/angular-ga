@@ -1,6 +1,6 @@
 {
   "name": "angular-ga",
-  "version": "0.3.0",
+  "version": "1.0.0",
   "description": "Google Analytics for your Angular application",
   "license": "MIT",
   "repository": "SamVerschueren/angular-ga",
