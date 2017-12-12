@@ -1,6 +1,6 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 
-import { GoogleAnalyticsService } from './ga.service';
+import {GoogleAnalyticsService} from './ga.service';
 
 @NgModule({
 	imports: [],

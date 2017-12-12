@@ -1,15 +1,14 @@
-import { Injectable, Inject, Optional, EventEmitter } from '@angular/core';
+import {Injectable, Inject, Optional, EventEmitter} from '@angular/core';
 
-import { GA_TOKEN, GA_OPTIONS } from './ga.token';
-import { Event } from './interfaces/event';
-import { PageView } from './interfaces/pageview';
-import { TrackingOptions } from './interfaces/tracking-options';
+import {GA_TOKEN, GA_OPTIONS} from './ga.token';
+import {Event} from './interfaces/event';
+import {PageView} from './interfaces/pageview';
+import {TrackingOptions} from './interfaces/tracking-options';
 
 declare const ga: any;
 
 @Injectable()
 export class GoogleAnalyticsService {
-
 	event = new EventEmitter<Event>();
 	pageview = new EventEmitter<PageView>();
 
@@ -22,7 +21,7 @@ export class GoogleAnalyticsService {
 		}
 	}
 
-	configure(trackingId: string, options: TrackingOptions = 'auto') {
+	configure(trackingId: string, options: TrackingOptions | string = 'auto') {
 		ga('create', trackingId, options);
 		ga('send', 'pageview');
 
@@ -38,7 +37,7 @@ export class GoogleAnalyticsService {
 		}
 
 		if (typeof key === 'string' && value === undefined) {
-			throw new TypeError(`Expected \`fieldValue\` to not be \`undefined\``);
+			throw new TypeError('Expected `fieldValue` to not be `undefined`');
 		}
 
 		if (typeof key === 'object') {

@@ -1,4 +1,4 @@
-import { OpaqueToken } from '@angular/core';
+import {InjectionToken} from '@angular/core';
 
-export const GA_TOKEN = new OpaqueToken('angular-ga TrackingId');
-export const GA_OPTIONS = new OpaqueToken('angular-ga Tracking Options');
+export const GA_TOKEN = new InjectionToken('angular-ga TrackingId');
+export const GA_OPTIONS = new InjectionToken('angular-ga Tracking Options');
