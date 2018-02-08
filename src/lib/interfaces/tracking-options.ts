@@ -1,5 +1,6 @@
 export interface TrackingOptions {
 	name?: string;
+	namedTracker: boolean;
 	storage?: string;
 	clientId?: string;
 	sampleRate?: number;

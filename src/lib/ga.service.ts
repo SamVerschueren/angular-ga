@@ -11,6 +11,8 @@ declare const ga: any;
 export class GoogleAnalyticsService {
 	event = new EventEmitter<Event>();
 	pageview = new EventEmitter<PageView>();
+	sendCommand: string = 'send';
+	setCommand: string = 'set';
 
 	constructor(
 		@Optional() @Inject(GA_TOKEN) trackingId: string,
@@ -22,8 +24,17 @@ export class GoogleAnalyticsService {
 	}
 
 	configure(trackingId: string, options: TrackingOptions | string = 'auto') {
+		if (typeof options === 'object' && options.namedTracker) {
+			if (typeof options.name === 'string' && !options.name) {
+				throw new TypeError('Expected `options.name` to not be `undefined`');
+			}
+
+			this.sendCommand = options.name + '.send';
+			this.setCommand = options.name + '.set';
+		}
+
 		ga('create', trackingId, options);
-		ga('send', 'pageview');
+		ga(this.sendCommand, 'pageview');
 
 		this.event.subscribe((x: Event) => this.onEvent(x));
 		this.pageview.subscribe((x: PageView) => this.onPageView(x));
@@ -41,14 +52,14 @@ export class GoogleAnalyticsService {
 		}
 
 		if (typeof key === 'object') {
-			ga('set', key);
+			ga(this.setCommand, key);
 		} else {
-			ga('set', key, value);
+			ga(this.setCommand, key, value);
 		}
 	}
 
 	private onEvent(event: Event) {
-		ga('send', 'event', event.category, event.action, event.label, event.value);
+		ga(this.sendCommand, 'event', event.category, event.action, event.label, event.value);
 	}
 
 	private onPageView(pageview: PageView) {
@@ -58,6 +69,6 @@ export class GoogleAnalyticsService {
 			fieldsObject.title = pageview.title;
 		}
 
-		ga('send', 'pageview', pageview.page, fieldsObject);
+		ga(this.sendCommand, 'pageview', pageview.page, fieldsObject);
 	}
 }
