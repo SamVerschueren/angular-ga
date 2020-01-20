@@ -9,7 +9,7 @@
 		"email": "sam.verschueren@gmail.com"
 	},
 	"engines": {
-		"node": ">=4"
+		"node": ">=8"
 	},
 	"scripts": {
 		"test": "npm run lint",
@@ -26,21 +26,21 @@
 		"ganalytics"
 	],
 	"peerDependencies": {
-		"@angular/core": "^5.1.0"
+		"@angular/core": "^8.0.0"
 	},
 	"devDependencies": {
-		"@angular/common": "^5.1.0",
-		"@angular/compiler": "^5.1.0",
-		"@angular/compiler-cli": "^5.1.0",
-		"@angular/core": "^5.1.0",
-		"@angular/platform-server": "^5.1.0",
-		"codelyzer": "^4.0.2",
-		"ng-packagr": "^1.6.0",
-		"rxjs": "^5.5.5",
+		"@angular/common": "^8.0.0",
+		"@angular/compiler": "^8.0.0",
+		"@angular/compiler-cli": "^8.0.0",
+		"@angular/core": "^8.0.0",
+		"@angular/platform-server": "^8.0.0",
+		"codelyzer": "^5.2.1",
+		"ng-packagr": "^5.7.1",
+		"rxjs": "^6.5.4",
 		"tslint": "^5.8.0",
-		"tslint-xo": "^0.3.0",
-		"typescript": "^2.6.2",
-		"zone.js": "0.7.2"
+		"tslint-xo": "^0.16.0",
+		"typescript": "~3.4.5",
+		"zone.js": "0.10.2"
 	},
 	"ngPackage": {
 		"lib": {

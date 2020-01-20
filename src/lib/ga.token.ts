@@ -1,4 +1,6 @@
 import {InjectionToken} from '@angular/core';
 
-export const GA_TOKEN = new InjectionToken('angular-ga TrackingId');
-export const GA_OPTIONS = new InjectionToken('angular-ga Tracking Options');
+import {TrackingOptions} from './interfaces/tracking-options';
+
+export const GA_TOKEN = new InjectionToken<string>('angular-ga TrackingId');
+export const GA_OPTIONS = new InjectionToken<TrackingOptions | string>('angular-ga Tracking Options');

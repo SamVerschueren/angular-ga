@@ -5,33 +5,38 @@ import {Event} from './interfaces/event';
 import {PageView} from './interfaces/pageview';
 import {TrackingOptions} from './interfaces/tracking-options';
 
-declare const ga: any;
+declare const ga: (...options: unknown[]) => void;
 
 @Injectable()
 export class GoogleAnalyticsService {
-	event = new EventEmitter<Event>();
-	pageview = new EventEmitter<PageView>();
+	event: EventEmitter<Event> = new EventEmitter<Event>();
+	pageview: EventEmitter<PageView> = new EventEmitter<PageView>();
 
 	constructor(
 		@Optional() @Inject(GA_TOKEN) trackingId: string,
-		@Optional() @Inject(GA_OPTIONS) options: any
+		@Optional() @Inject(GA_OPTIONS) options: TrackingOptions | string
 	) {
 		if (trackingId) {
 			this.configure(trackingId, options);
 		}
 	}
 
-	configure(trackingId: string, options: TrackingOptions | string = 'auto') {
+	configure(trackingId: string, options: TrackingOptions | string = 'auto'): void {
 		ga('create', trackingId, options);
 		ga('send', 'pageview');
 
-		this.event.subscribe((x: Event) => this.onEvent(x));
-		this.pageview.subscribe((x: PageView) => this.onPageView(x));
+		this.event.subscribe((x: Event) => {
+			this.onEvent(x);
+		});
+
+		this.pageview.subscribe((x: PageView) => {
+			this.onPageView(x);
+		});
 	}
 
 	set(fieldsObject: any): void;
 	set(fieldName: string, fieldValue: any): void;
-	set(key: any, value?: any) {
+	set(key: any, value?: any): void {
 		if (typeof key !== 'string' && typeof key !== 'object') {
 			throw new TypeError(`Expected \`fieldName\` to be of type \`string\` or \`object\`, got \`${typeof key}\``);
 		}
@@ -47,12 +52,12 @@ export class GoogleAnalyticsService {
 		}
 	}
 
-	private onEvent(event: Event) {
+	private onEvent(event: Event): void {
 		ga('send', 'event', event.category, event.action, event.label, event.value);
 	}
 
-	private onPageView(pageview: PageView) {
-		const fieldsObject: any = {};
+	private onPageView(pageview: PageView): void {
+		const fieldsObject: {title?: string} = {};
 
 		if (pageview.title) {
 			fieldsObject.title = pageview.title;
