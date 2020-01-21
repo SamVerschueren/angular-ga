@@ -5,6 +5,7 @@
 	],
 	"rules": {
 		"no-stateless-class": false,
-		"no-unnecessary-class": false
+		"no-unnecessary-class": false,
+		"align": false
 	}
 }
