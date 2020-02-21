@@ -22,9 +22,12 @@ export class GoogleAnalyticsService {
 		}
 	}
 
-	configure(trackingId: string, options: TrackingOptions | string = 'auto'): void {
+	configure(trackingId: string, options: TrackingOptions | string = 'auto', sendPageview = true): void {
 		this.ga('create', trackingId, options);
-		this.ga('send', 'pageview');
+
+		if (sendPageview){
+			this.ga('send', 'pageview');
+		}
 
 		this.event.subscribe((x: Event) => {
 			this.onEvent(x);

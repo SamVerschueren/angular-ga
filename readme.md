@@ -108,7 +108,7 @@ export class AppComponent implements OnInit {
 
 ## API
 
-### service.configure(trackingId, [options])
+### service.configure(trackingId, [options], [sendPageview])
 
 #### trackingId
 
@@ -122,6 +122,13 @@ Type: `Object` `string`<br>
 Default: `auto`
 
 Any of the [`Create Only Fields`](https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#create).
+
+#### sendPageview
+
+Type: `Boolean`<br>
+Default: `true`
+
+Set this to false to prevent automatically sending a pageview when configuring the service.
 
 ### service.event.emit(event: Event)
 
